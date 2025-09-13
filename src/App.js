@@ -27,9 +27,14 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+
 
   const handleUpload = async () => {
-    if (!file) return alert("Please select an audio file");
+    if (!file) {
+      setShowAlert(true);
+      return;
+    }
 
     const formData = new FormData();
     formData.append("audio", file); 
